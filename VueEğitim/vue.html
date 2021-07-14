@@ -1,0 +1,151 @@
+<!DOCTYPE HTML>
+
+<html lang="en-US">
+
+<head>
+
+	<meta charset="UTF-8">
+	<title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div id="app">
+        <!-- {{ someValue }}
+
+        {{ dizi }}
+        <ul>
+            <li v-for="name in names" >{{ name }} <button v-on:click='sil'>sil</button> </li>
+        </ul> -->
+    <!-- {{ foo }} -->
+    
+    
+        <!-- <input  type="text" v-model="newName" v-on:keyUp="addName">
+        <button v-on:click="addName">Add</button>
+    </div> -->
+    <!-- 
+    <div id="root">
+        <input type="text" id="input" v-model="message">
+        <p>{{ message }}</p>
+    -->
+    
+
+    <div v-for="diz in dizi" class="border w-50 m-2 bg-primary">
+    
+         <input type="text" v-model="diz.baslik">
+        <div v-for="(di,index) in diz.icindekiler" class=" bg- border w-50  float-left m-2 bg-secondary text-white">
+           
+             <input type="text" v-model="di.baslik">
+             <div v-for="(iciceKutu,index) in di.icice" class=" bg-red border w-50  float-left m-2 bg-secondary text-white">
+                    {{ iciceKutu.baslik }}    
+            </div>
+             <button class="row" v-on:click="addKucukKutuici(di)">+</button>
+        
+        </div>
+        <br>
+        <br>
+        <button class="row" v-on:click="addKucukKutu(diz)">+</button>
+    </div>
+    <button v-on:click="addBuyukKutu">+</button>
+
+</div> 
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>	
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script> 
+
+new Vue({
+  el: "#app",
+  data() {
+    return {
+        Comp:{type:'en kucuk kutu',baslik:'en kucuk kutu '},
+        Comp1: { type:'buyuk kutu',  baslik:'kutu ', icindekiler: [ {type:'kucuk kutu',baslik:'kucuk kutu 1.1'}, ] },
+
+        dizi: [
+            {
+                type:'buyuk kutu',
+                baslik:'kutu 1',
+                icindekiler: [
+                    {type:'kucuk kutu',baslik:'kucuk kutu 1.1',
+                    icice:[
+                        {type:'kucuk kutu',baslik:'kucuk kutu 1.1'},
+                        ]
+                    },
+                    {type:'kucuk kutu',baslik:'kucuk kutu 1.2',
+                    icice:[
+                        {type:'kucuk kutu',baslik:'kucuk kutu 1.1'},
+                        ]}
+                ]
+            },
+            {
+                type:'buyuk kutu',
+                baslik:'kutu 2',
+                icindekiler: [
+                    {type:'kucuk kutu',baslik:'kucuk kutu 2.1'},
+                    {type:'kucuk kutu',baslik:'kucuk kutu 2.2'}
+                ]
+            }
+        ]
+    }
+  }, 
+  methods: {
+     
+    addKucukKutu:function(diz){
+        diz.icindekiler.push(this.Comp)
+    },
+    addBuyukKutu:function(){
+        this.dizi.push(this.Comp1)
+    },
+    addKucukKutuici:function(di){  
+        di.icice.push(this.Comp)
+    }
+
+}
+});
+// var app = Vue.createApp();
+
+// app.Component('person',{
+//     template: '<div>Merhaba</div>'
+// });
+
+// var app = new Vue({
+//     el:'#root',
+//     data: {
+//         Components:'',
+//         message:'',
+//         newName:'',        
+//         divCreate:''
+//         //foo: 'bar'
+//     // message : "Hello World",
+// },
+// template: '<div>{{ message }}</div>'
+// // methods: {
+// //     addName: function() {
+// //          this.names.push(this.newName);
+// //     },
+// //     sil:function(){
+// //         this.names.pop(this.name)
+// //     },
+// //     compAdd:function(){
+// //         this.Components.push(Comp)
+// //     }
+// // },
+//     // mounted(){
+
+
+//     // }
+
+// })
+// app.message = 'hello';
+
+
+
+
+</script>
+</body>
+
+</html>
+

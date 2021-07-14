@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<title></title>
+</head>
+<body>
+
+<div id="component">
+
+<input type="text" v-bind:value="name">
+<p>{{ name }} {{age}}</p>
+<p >{{ age * 5 }}   </p>
+<p> {{randomNumber() }}</p>
+<img v-bind:src="image">
+
+</div>
+
+<script type="text/javascript">
+	new Vue({
+	el:'#component',
+  data:{
+  	icerik:'deneme icerik',
+  	name:'yunus',
+  	age:25,
+  	image:'https://www.tasarimkodlama.com/wp-content/uploads/2018/11/tasarim_kodlama_uzun-e1542533974839.png'
+  },
+  methods : {
+
+  
+
+  	randomNumber :function(){
+  	return Math.random();
+  	}
+  }
+});
+</script>
+
+</body>
+</html>

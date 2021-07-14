@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<title></title>
+</head>
+<body>
+
+<div id="component">
+
+<button v-on:click="counter--">azalt</button>
+<button v-on:click="counter++">arttır</button>
+<p>{{counter}}</p>
+<p v-on:mousemove="updateCoords">burada çalışır fakat {{x}} {{y}}
+	<span v-on:mousemove.stop>Güncelleme Yapmaz</span>
+</p>
+
+</div>
+
+<script type="text/javascript">
+	new Vue({
+	el:'#component',
+	data:{
+		x:0,
+		y:0,
+		counter : 0,
+	},
+  methods : {
+  	updateCoords : function(event){
+  		this.x = event.clientX;
+  		this.y = event.clientY;
+  	},
+  	showAlert :function(){
+  	 alert('yunus');
+  	}
+  
+  }
+});
+</script>
+
+</body>
+</html>
